@@ -527,7 +527,7 @@ const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZ
 // State
 let currentPlayer = 'beau';
 let workoutVal = 0;
-let waterVal = 1;
+let waterVal = 0;
 let selectedDate = todayStr();
 let allEntries = {};  // { 'beau': { 'YYYY-MM-DD': {workout, water} }, 'annalise': {...} }
 
@@ -660,7 +660,7 @@ function updateEntryUI() {
   // Load existing values for selected date
   const existing = (allEntries[currentPlayer] || {})[selectedDate];
   workoutVal = existing ? existing.workout : 0;
-  waterVal   = existing ? existing.water  : 1;
+  waterVal   = existing ? existing.water  : 0;
 
   updateStepperUI();
   updateWaterUI();
