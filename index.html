@@ -7,431 +7,91 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --beau: #1a6b4a;
-    --beau-light: #e8f5ee;
-    --beau-mid: #4a9e78;
-    --annalise: #7b2d8b;
-    --annalise-light: #f5eaf8;
-    --annalise-mid: #b06bc0;
-    --dark: #111;
-    --gold: #f5c842;
-    --bg: #f7f4ef;
-    --card: #ffffff;
-    --text: #1a1a1a;
-    --muted: #888;
-    --radius: 18px;
+    --beau: #1a6b4a; --beau-light: #e8f5ee;
+    --annalise: #7b2d8b; --annalise-light: #f5eaf8;
+    --dark: #111; --gold: #f5c842; --bg: #f7f4ef; --card: #ffffff; --muted: #888; --radius: 18px;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    padding-bottom: 40px;
-  }
-
-  /* ── Header ── */
-  .header {
-    background: var(--dark);
-    padding: 20px 20px 16px;
-    text-align: center;
-    position: relative;
-  }
-  .header h1 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.4rem;
-    letter-spacing: 3px;
-    color: #fff;
-    line-height: 1;
-  }
-  .header h1 span.vs {
-    color: var(--gold);
-    font-size: 1.6rem;
-    margin: 0 8px;
-  }
-  .header .subtitle {
-    color: #888;
-    font-size: 0.78rem;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin-top: 4px;
-  }
-
-  /* ── Scoreboard ── */
-  .scoreboard {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-    gap: 10px;
-    padding: 20px 16px 8px;
-  }
-  .score-card {
-    background: var(--card);
-    border-radius: var(--radius);
-    padding: 16px 12px;
-    text-align: center;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-    transition: transform 0.2s;
-  }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--dark); min-height: 100vh; padding-bottom: 40px; }
+  .header { background: var(--dark); padding: 20px 20px 16px; text-align: center; }
+  .header h1 { font-family: 'Bebas Neue', sans-serif; font-size: 2.4rem; letter-spacing: 3px; color: #fff; line-height: 1; }
+  .header h1 span.vs { color: var(--gold); font-size: 1.6rem; margin: 0 8px; }
+  .header .subtitle { color: #888; font-size: 0.78rem; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 4px; }
+  .scoreboard { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 10px; padding: 20px 16px 8px; }
+  .score-card { background: var(--card); border-radius: var(--radius); padding: 16px 12px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
   .score-card.beau { border-top: 4px solid var(--beau); }
   .score-card.annalise { border-top: 4px solid var(--annalise); }
-  .score-card .name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.3rem;
-    letter-spacing: 2px;
-    margin-bottom: 4px;
-  }
+  .score-card .name { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 2px; margin-bottom: 4px; }
   .score-card.beau .name { color: var(--beau); }
   .score-card.annalise .name { color: var(--annalise); }
-  .score-card .pts {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 3rem;
-    line-height: 1;
-    color: var(--dark);
-  }
-  .score-card .pts-label {
-    font-size: 0.68rem;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-  .score-card .pacing {
-    font-size: 0.72rem;
-    font-weight: 600;
-    margin-top: 4px;
-    min-height: 16px;
-  }
-  .vs-badge {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.4rem;
-    color: var(--muted);
-    letter-spacing: 2px;
-  }
-
-  /* ── Winner banner ── */
-  .winner-banner {
-    margin: 0 16px 6px;
-    background: var(--dark);
-    border-radius: 12px;
-    padding: 10px 16px;
-    text-align: center;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.1rem;
-    letter-spacing: 2px;
-    color: var(--gold);
-    min-height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* ── Tab switcher ── */
-  .tabs {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    padding: 16px 16px 8px;
-  }
-  .tab-btn {
-    padding: 12px;
-    border: none;
-    border-radius: 12px;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.1rem;
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: all 0.2s;
-    background: #e0ddd7;
-    color: #888;
-  }
-  .tab-btn.active.beau {
-    background: var(--beau);
-    color: #fff;
-    box-shadow: 0 4px 14px rgba(26,107,74,0.35);
-  }
-  .tab-btn.active.annalise {
-    background: var(--annalise);
-    color: #fff;
-    box-shadow: 0 4px 14px rgba(123,45,139,0.35);
-  }
-
-  /* ── Section label ── */
-  .section-label {
-    padding: 8px 16px 6px;
-    font-size: 0.72rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--muted);
-    font-weight: 600;
-  }
-
-  /* ── Today card ── */
-  .today-card {
-    margin: 0 16px 12px;
-    background: var(--card);
-    border-radius: var(--radius);
-    padding: 20px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-  }
-  .today-card .date-label {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--muted);
-    margin-bottom: 14px;
-  }
-
-  /* Workout stepper */
-  .field-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 16px;
-  }
+  .score-card .pts { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; line-height: 1; color: var(--dark); }
+  .score-card .pts-label { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+  .score-card .pacing { font-size: 0.72rem; font-weight: 600; margin-top: 4px; min-height: 16px; }
+  .vs-badge { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--muted); letter-spacing: 2px; }
+  .winner-banner { margin: 0 16px 6px; background: var(--dark); border-radius: 12px; padding: 10px 16px; text-align: center; font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 2px; color: var(--gold); min-height: 40px; display: flex; align-items: center; justify-content: center; }
+  .tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 16px 16px 8px; }
+  .tab-btn { padding: 12px; border: none; border-radius: 12px; font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 2px; cursor: pointer; transition: all 0.2s; background: #e0ddd7; color: #888; }
+  .tab-btn.active.beau { background: var(--beau); color: #fff; box-shadow: 0 4px 14px rgba(26,107,74,0.35); }
+  .tab-btn.active.annalise { background: var(--annalise); color: #fff; box-shadow: 0 4px 14px rgba(123,45,139,0.35); }
+  .section-label { padding: 8px 16px 6px; font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .today-card { margin: 0 16px 12px; background: var(--card); border-radius: var(--radius); padding: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
+  .today-card .date-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin-bottom: 14px; }
+  .field-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
   .field-info { flex: 1; }
-  .field-info .field-name {
-    font-weight: 600;
-    font-size: 0.95rem;
-  }
-  .field-info .field-sub {
-    font-size: 0.75rem;
-    color: var(--muted);
-    margin-top: 1px;
-  }
-  .stepper {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .stepper button {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border: none;
-    font-size: 1.2rem;
-    cursor: pointer;
-    font-weight: bold;
-    transition: all 0.15s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  .field-info .field-name { font-weight: 600; font-size: 0.95rem; }
+  .field-info .field-sub { font-size: 0.75rem; color: var(--muted); margin-top: 1px; }
+  .stepper { display: flex; align-items: center; gap: 10px; }
+  .stepper button { width: 36px; height: 36px; border-radius: 50%; border: none; font-size: 1.2rem; cursor: pointer; font-weight: bold; transition: all 0.15s; display: flex; align-items: center; justify-content: center; }
   .stepper button:active { transform: scale(0.92); }
-  .stepper .count {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.6rem;
-    min-width: 28px;
-    text-align: center;
-    line-height: 1;
-  }
-
-  /* Beau colors */
+  .stepper .count { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; min-width: 28px; text-align: center; line-height: 1; }
   .beau-active .stepper button { background: var(--beau-light); color: var(--beau); }
-  .beau-active .stepper button:disabled { opacity: 0.3; cursor: default; }
+  .beau-active .stepper button:disabled { opacity: 0.3; }
   .beau-active .stepper .count { color: var(--beau); }
-
-  /* Annalise colors */
   .annalise-active .stepper button { background: var(--annalise-light); color: var(--annalise); }
-  .annalise-active .stepper button:disabled { opacity: 0.3; cursor: default; }
+  .annalise-active .stepper button:disabled { opacity: 0.3; }
   .annalise-active .stepper .count { color: var(--annalise); }
-
-  /* Water toggle */
-  .water-toggle {
-    display: flex;
-    gap: 8px;
-  }
-  .water-btn {
-    padding: 8px 18px;
-    border-radius: 20px;
-    border: 2px solid #e0ddd7;
-    background: #fff;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.15s;
-    color: #aaa;
-  }
+  .steps-btns { display: flex; gap: 6px; }
+  .steps-btn { padding: 7px 10px; border-radius: 10px; border: 2px solid #e0ddd7; background: #fff; font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 700; cursor: pointer; transition: all 0.15s; color: #aaa; text-align: center; line-height: 1.3; min-width: 44px; }
+  .steps-btn:active { transform: scale(0.95); }
+  .steps-btn.selected { color: #fff; border-color: transparent; }
+  .beau-active .steps-btn.selected { background: var(--beau); }
+  .annalise-active .steps-btn.selected { background: var(--annalise); }
+  .water-toggle { display: flex; gap: 8px; }
+  .water-btn { padding: 8px 18px; border-radius: 20px; border: 2px solid #e0ddd7; background: #fff; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.15s; color: #aaa; }
   .water-btn:active { transform: scale(0.95); }
-  .beau-active .water-btn.selected {
-    background: var(--beau);
-    border-color: var(--beau);
-    color: #fff;
-  }
-  .annalise-active .water-btn.selected {
-    background: var(--annalise);
-    border-color: var(--annalise);
-    color: #fff;
-  }
-
-  /* Save button */
-  .save-btn {
-    width: 100%;
-    padding: 15px;
-    border: none;
-    border-radius: 14px;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.2rem;
-    letter-spacing: 3px;
-    cursor: pointer;
-    margin-top: 6px;
-    transition: all 0.2s;
-  }
+  .beau-active .water-btn.selected { background: var(--beau); border-color: var(--beau); color: #fff; }
+  .annalise-active .water-btn.selected { background: var(--annalise); border-color: var(--annalise); color: #fff; }
+  .save-btn { width: 100%; padding: 15px; border: none; border-radius: 14px; font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 3px; cursor: pointer; margin-top: 6px; transition: all 0.2s; }
   .save-btn:active { transform: scale(0.97); }
-  .beau-active .save-btn {
-    background: var(--beau);
-    color: #fff;
-    box-shadow: 0 4px 14px rgba(26,107,74,0.3);
-  }
-  .annalise-active .save-btn {
-    background: var(--annalise);
-    color: #fff;
-    box-shadow: 0 4px 14px rgba(123,45,139,0.3);
-  }
+  .beau-active .save-btn { background: var(--beau); color: #fff; box-shadow: 0 4px 14px rgba(26,107,74,0.3); }
+  .annalise-active .save-btn { background: var(--annalise); color: #fff; box-shadow: 0 4px 14px rgba(123,45,139,0.3); }
   .save-btn:disabled { opacity: 0.5; cursor: default; }
-
-  /* ── Calendar ── */
-  .calendar-wrap {
-    margin: 0 16px 16px;
-    background: var(--card);
-    border-radius: var(--radius);
-    padding: 16px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-  }
-  .cal-header {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 3px;
-    margin-bottom: 6px;
-  }
-  .cal-day-name {
-    text-align: center;
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    color: var(--muted);
-    padding: 4px 0;
-  }
-  .cal-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 3px;
-  }
-  .cal-cell {
-    aspect-ratio: 1;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.7rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.15s;
-    position: relative;
-    background: #f3f1ed;
-    color: #999;
-  }
+  .calendar-wrap { margin: 0 16px 16px; background: var(--card); border-radius: var(--radius); padding: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
+  .cal-header { display: grid; grid-template-columns: repeat(7,1fr); gap: 3px; margin-bottom: 6px; }
+  .cal-day-name { text-align: center; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; color: var(--muted); padding: 4px 0; }
+  .cal-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 3px; }
+  .cal-cell { aspect-ratio: 1; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 600; cursor: pointer; transition: all 0.15s; background: #f3f1ed; color: #999; }
   .cal-cell.empty { background: transparent; cursor: default; }
   .cal-cell.future { opacity: 0.4; cursor: default; }
   .cal-cell .cal-num { font-size: 0.75rem; line-height: 1; }
-  .cal-cell .cal-pts {
-    font-size: 0.6rem;
-    margin-top: 1px;
-    font-weight: 700;
-  }
-  .cal-cell.today {
-    border: 2px solid var(--dark);
-    color: var(--dark);
-  }
-  .cal-cell.has-data.beau-cal {
-    background: var(--beau-light);
-    color: var(--beau);
-  }
-  .cal-cell.has-data.beau-cal .cal-pts { color: var(--beau); }
-  .cal-cell.has-data.annalise-cal {
-    background: var(--annalise-light);
-    color: var(--annalise);
-  }
-  .cal-cell.has-data.annalise-cal .cal-pts { color: var(--annalise); }
-  .cal-cell.selected-day {
-    box-shadow: 0 0 0 2px var(--dark);
-  }
-
-  /* ── Toast ── */
-  .toast {
-    position: fixed;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%) translateY(80px);
-    background: var(--dark);
-    color: #fff;
-    padding: 12px 24px;
-    border-radius: 40px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    white-space: nowrap;
-    z-index: 999;
-    pointer-events: none;
-  }
-  .toast.show { transform: translateX(-50%) translateY(0); }
-
-  /* ── Loading ── */
-  .loading {
-    text-align: center;
-    padding: 30px;
-    color: var(--muted);
-    font-size: 0.85rem;
-  }
-  .spinner {
-    width: 28px;
-    height: 28px;
-    border: 3px solid #e0ddd7;
-    border-top-color: var(--dark);
-    border-radius: 50%;
-    animation: spin 0.7s linear infinite;
-    margin: 0 auto 10px;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
-
-  /* ── Rules ── */
-  .rules-box {
-    margin: 0 16px 16px;
-    background: #fff8e8;
-    border-radius: 14px;
-    padding: 14px 16px;
-    border-left: 4px solid var(--gold);
-  }
-  .rules-box .rules-title {
-    font-family: 'Bebas Neue', sans-serif;
-    letter-spacing: 2px;
-    font-size: 1rem;
-    margin-bottom: 6px;
-    color: var(--dark);
-  }
-  .rules-box ul {
-    list-style: none;
-    font-size: 0.8rem;
-    color: #555;
-    line-height: 1.8;
-  }
+  .cal-cell .cal-pts { font-size: 0.6rem; margin-top: 1px; font-weight: 700; }
+  .cal-cell.today { border: 2px solid var(--dark); color: var(--dark); }
+  .cal-cell.has-data.beau-cal { background: var(--beau-light); color: var(--beau); }
+  .cal-cell.has-data.annalise-cal { background: var(--annalise-light); color: var(--annalise); }
+  .cal-cell.selected-day { box-shadow: 0 0 0 2px var(--dark); }
+  .rules-box { margin: 0 16px 16px; background: #fff8e8; border-radius: 14px; padding: 14px 16px; border-left: 4px solid var(--gold); }
+  .rules-box .rules-title { font-family: 'Bebas Neue', sans-serif; letter-spacing: 2px; font-size: 1rem; margin-bottom: 6px; }
+  .rules-box ul { list-style: none; font-size: 0.8rem; color: #555; line-height: 1.8; }
   .rules-box ul li::before { content: "→ "; color: var(--gold); font-weight: bold; }
+  .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--dark); color: #fff; padding: 12px 24px; border-radius: 40px; font-size: 0.85rem; font-weight: 600; transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1); white-space: nowrap; z-index: 999; pointer-events: none; }
+  .toast.show { transform: translateX(-50%) translateY(0); }
 </style>
 </head>
 <body>
-
-<!-- Header -->
 <div class="header">
   <h1>BEAU <span class="vs">VS</span> ANNALISE</h1>
-  <div class="subtitle">June 2026 Fitness Challenge</div>
+  <div class="subtitle">July 2026 Fitness Challenge</div>
 </div>
-
-<!-- Scoreboard -->
 <div class="scoreboard">
   <div class="score-card beau">
     <div class="name">Beau</div>
@@ -447,349 +107,140 @@
     <div class="pacing" id="annalise-pacing"></div>
   </div>
 </div>
-
-<!-- Winner banner -->
 <div class="winner-banner" id="winner-banner">Loading scores...</div>
-
-<!-- Tabs -->
 <div class="tabs">
   <button class="tab-btn active beau" onclick="switchPlayer('beau')">💪 Beau</button>
   <button class="tab-btn annalise" onclick="switchPlayer('annalise')">💜 Annalise</button>
 </div>
-
-<!-- Rules -->
 <div class="rules-box">
   <div class="rules-title">📋 Rules</div>
   <ul>
-    <li>1 pt per 30-min workout (max 3 pts/day)</li>
-    <li>1 pt for drinking ½ your body weight in oz of water</li>
-    <li>Most points at end of June wins!</li>
+    <li>💪 1 pt per 30-min workout (max 3 pts/day)</li>
+    <li>💧 1 pt for drinking ½ your body weight in oz of water</li>
+    <li>👟 Steps: 1pt (5k+), 2pts (10k+), 3pts (15k+)</li>
+    <li>Max 7 pts/day — most points at end of July wins!</li>
   </ul>
 </div>
-
-<!-- Today entry card -->
 <div class="section-label" id="entry-label">Log Today — Beau</div>
-<div class="today-card" id="today-card">
+<div class="today-card beau-active" id="today-card">
   <div class="date-label" id="today-date-label">Loading...</div>
-
-  <!-- Workout stepper -->
   <div class="field-row">
-    <div class="field-info">
-      <div class="field-name">💪 Workout</div>
-      <div class="field-sub">30 min sessions (max 3)</div>
-    </div>
+    <div class="field-info"><div class="field-name">💪 Workout</div><div class="field-sub">30 min sessions (max 3)</div></div>
     <div class="stepper">
       <button onclick="changeWorkout(-1)" id="workout-minus">−</button>
       <div class="count" id="workout-count">0</div>
       <button onclick="changeWorkout(1)" id="workout-plus">+</button>
     </div>
   </div>
-
-  <!-- Water toggle -->
   <div class="field-row">
-    <div class="field-info">
-      <div class="field-name">💧 Water</div>
-      <div class="field-sub">½ your body weight in oz</div>
+    <div class="field-info"><div class="field-name">👟 Steps</div><div class="field-sub">Total steps today</div></div>
+    <div class="steps-btns">
+      <button class="steps-btn selected" id="steps-0" onclick="setSteps(0)">0</button>
+      <button class="steps-btn" id="steps-1" onclick="setSteps(1)">5k+<br>1pt</button>
+      <button class="steps-btn" id="steps-2" onclick="setSteps(2)">10k+<br>2pts</button>
+      <button class="steps-btn" id="steps-3" onclick="setSteps(3)">15k+<br>3pts</button>
     </div>
+  </div>
+  <div class="field-row">
+    <div class="field-info"><div class="field-name">💧 Water</div><div class="field-sub">½ your body weight in oz</div></div>
     <div class="water-toggle">
       <button class="water-btn" id="water-no" onclick="setWater(0)">✗ No</button>
       <button class="water-btn selected" id="water-yes" onclick="setWater(1)">✓ Yes</button>
     </div>
   </div>
-
   <button class="save-btn" id="save-btn" onclick="saveEntry()">SAVE LOG</button>
 </div>
-
-<!-- Calendar -->
-<div class="section-label" id="cal-label">June — Beau</div>
+<div class="section-label" id="cal-label">July — Beau</div>
 <div class="calendar-wrap">
   <div class="cal-header">
-    <div class="cal-day-name">S</div>
-    <div class="cal-day-name">M</div>
-    <div class="cal-day-name">T</div>
-    <div class="cal-day-name">W</div>
-    <div class="cal-day-name">T</div>
-    <div class="cal-day-name">F</div>
-    <div class="cal-day-name">S</div>
+    <div class="cal-day-name">S</div><div class="cal-day-name">M</div><div class="cal-day-name">T</div><div class="cal-day-name">W</div><div class="cal-day-name">T</div><div class="cal-day-name">F</div><div class="cal-day-name">S</div>
   </div>
-  <div class="cal-grid" id="cal-grid">
-    <div class="loading"><div class="spinner"></div>Loading...</div>
-  </div>
+  <div class="cal-grid" id="cal-grid"></div>
 </div>
-
-<!-- Toast -->
 <div class="toast" id="toast"></div>
-
 <script>
-const SUPABASE_URL = 'https://szjmfoicxzmdcesehcvp.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN6am1mb2ljeHptZGNlc2VoY3ZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc0Mzg4MDUsImV4cCI6MjA5MzAxNDgwNX0.4PtF0yCzkT_kzm-DwZDc51hVx9wok3jPj_tPf7sWhDA';
-
-// State
-let currentPlayer = 'beau';
-let workoutVal = 0;
-let waterVal = 0;
-let selectedDate = todayStr();
-let allEntries = {};  // { 'beau': { 'YYYY-MM-DD': {workout, water} }, 'annalise': {...} }
-
-function todayStr() {
-  const d = new Date();
-  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+const SUPABASE_URL='https://szjmfoicxzmdcesehcvp.supabase.co';
+const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN6am1mb2ljeHptZGNlc2VoY3ZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc0Mzg4MDUsImV4cCI6MjA5MzAxNDgwNX0.4PtF0yCzkT_kzm-DwZDc51hVx9wok3jPj_tPf7sWhDA';
+const TABLE='july_fitness_entries';
+let currentPlayer='beau',workoutVal=0,waterVal=1,stepsVal=0,selectedDate=todayStr(),allEntries={};
+function todayStr(){const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
+function dateLabel(ds){return new Date(ds+'T00:00:00').toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});}
+function totalPts(e){return(e.workout||0)+(e.water||0)+(e.steps||0);}
+async function fetchAllEntries(){
+  const res=await fetch(`${SUPABASE_URL}/rest/v1/${TABLE}?select=player,entry_date,workout_points,water_points,step_points`,{headers:{'apikey':SUPABASE_KEY,'Authorization':`Bearer ${SUPABASE_KEY}`}});
+  const rows=await res.json();allEntries={beau:{},annalise:{}};
+  if(Array.isArray(rows)){rows.forEach(r=>{allEntries[r.player][r.entry_date]={workout:r.workout_points,water:r.water_points,steps:r.step_points||0};});}
 }
-
-function dateLabel(dateStr) {
-  const d = new Date(dateStr + 'T00:00:00');
-  return d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
-}
-
-// ── API calls ──────────────────────────────────────────────────────────────
-
-async function fetchAllEntries() {
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/fitness_entries?select=player,entry_date,workout_points,water_points`, {
-    headers: {
-      'apikey': SUPABASE_KEY,
-      'Authorization': `Bearer ${SUPABASE_KEY}`
-    }
-  });
-  const rows = await res.json();
-  allEntries = { beau: {}, annalise: {} };
-  rows.forEach(r => {
-    allEntries[r.player][r.entry_date] = {
-      workout: r.workout_points,
-      water: r.water_points
-    };
-  });
-}
-
-async function upsertEntry(player, date, workout, water) {
-  const res = await fetch(`${SUPABASE_URL}/rest/v1/fitness_entries`, {
-    method: 'POST',
-    headers: {
-      'apikey': SUPABASE_KEY,
-      'Authorization': `Bearer ${SUPABASE_KEY}`,
-      'Content-Type': 'application/json',
-      'Prefer': 'resolution=merge-duplicates,return=minimal'
-    },
-    body: JSON.stringify({
-      player, entry_date: date,
-      workout_points: workout,
-      water_points: water,
-      updated_at: new Date().toISOString()
-    })
-  });
-  if (!res.ok) {
-    // Fallback: PATCH the existing row
-    const patch = await fetch(
-      `${SUPABASE_URL}/rest/v1/fitness_entries?player=eq.${player}&entry_date=eq.${date}`,
-      {
-        method: 'PATCH',
-        headers: {
-          'apikey': SUPABASE_KEY,
-          'Authorization': `Bearer ${SUPABASE_KEY}`,
-          'Content-Type': 'application/json',
-          'Prefer': 'return=minimal'
-        },
-        body: JSON.stringify({ workout_points: workout, water_points: water, updated_at: new Date().toISOString() })
-      }
-    );
-    return patch.ok;
-  }
+async function upsertEntry(player,date,workout,water,steps){
+  const res=await fetch(`${SUPABASE_URL}/rest/v1/${TABLE}`,{method:'POST',headers:{'apikey':SUPABASE_KEY,'Authorization':`Bearer ${SUPABASE_KEY}`,'Content-Type':'application/json','Prefer':'resolution=merge-duplicates,return=minimal'},body:JSON.stringify({player,entry_date:date,workout_points:workout,water_points:water,step_points:steps,updated_at:new Date().toISOString()})});
+  if(!res.ok){const patch=await fetch(`${SUPABASE_URL}/rest/v1/${TABLE}?player=eq.${player}&entry_date=eq.${date}`,{method:'PATCH',headers:{'apikey':SUPABASE_KEY,'Authorization':`Bearer ${SUPABASE_KEY}`,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify({workout_points:workout,water_points:water,step_points:steps,updated_at:new Date().toISOString()})});return patch.ok;}
   return true;
 }
-
-// ── UI Updates ─────────────────────────────────────────────────────────────
-
-function getDaysElapsed() {
-  const start = new Date(2026, 5, 1);
-  const today = new Date();
-  const todayClean = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-  const diff = Math.floor((todayClean - start) / (1000 * 60 * 60 * 24)) + 1;
-  return Math.min(Math.max(diff, 1), 30);
+function getDaysElapsed(){const start=new Date(2026,6,1);const today=new Date();const tc=new Date(today.getFullYear(),today.getMonth(),today.getDate());const diff=Math.floor((tc-start)/(1000*60*60*24))+1;return Math.min(Math.max(diff,1),31);}
+function getPacingText(pts){if(pts===0)return{text:'',color:''};const days=getDaysElapsed();const p=Math.round((pts/days)*31);const pct=p/(7*31);const color=pct>=0.75?'#1a6b4a':pct>=0.5?'#b07a1a':'#c0392b';return{text:`on pace for ${p} pts`,color};}
+function updateScores(){
+  let bT=0,aT=0;
+  Object.values(allEntries.beau||{}).forEach(e=>{bT+=totalPts(e);});
+  Object.values(allEntries.annalise||{}).forEach(e=>{aT+=totalPts(e);});
+  document.getElementById('beau-total').textContent=bT;
+  document.getElementById('annalise-total').textContent=aT;
+  const bP=getPacingText(bT);const aP=getPacingText(aT);
+  const bEl=document.getElementById('beau-pacing');const aEl=document.getElementById('annalise-pacing');
+  bEl.textContent=bP.text;bEl.style.color=bP.color;aEl.textContent=aP.text;aEl.style.color=aP.color;
+  const banner=document.getElementById('winner-banner');
+  if(bT===0&&aT===0){banner.textContent='🏁 Challenge is on — first to log wins the lead!';}
+  else if(bT>aT){banner.textContent=`🏆 BEAU IS LEADING  •  +${bT-aT} pts ahead`;}
+  else if(aT>bT){banner.textContent=`🏆 ANNALISE IS LEADING  •  +${aT-bT} pts ahead`;}
+  else{banner.textContent=`🤝 ALL TIED UP  •  ${bT} pts each`;}
 }
-
-function getPacingText(pts) {
-  if (pts === 0) return { text: '', color: '' };
-  const daysElapsed = getDaysElapsed();
-  const projected = Math.round((pts / daysElapsed) * 30);
-  const pct = projected / 120;
-  const color = pct >= 0.75 ? '#1a6b4a' : pct >= 0.5 ? '#b07a1a' : '#c0392b';
-  return { text: `on pace for ${projected} pts`, color };
+function updateEntryUI(){
+  const color=currentPlayer==='beau'?'beau':'annalise';
+  const name=currentPlayer==='beau'?'Beau':'Annalise';
+  document.getElementById('today-card').className=`today-card ${color}-active`;
+  document.getElementById('entry-label').textContent=`Log ${selectedDate===todayStr()?'Today':dateLabel(selectedDate)} — ${name}`;
+  document.getElementById('cal-label').textContent=`July — ${name}`;
+  document.getElementById('today-date-label').textContent=selectedDate===todayStr()?`Today • ${dateLabel(selectedDate)}`:dateLabel(selectedDate);
+  const ex=(allEntries[currentPlayer]||{})[selectedDate];
+  workoutVal=ex?ex.workout:0;waterVal=ex?ex.water:1;stepsVal=ex?ex.steps:0;
+  updateStepperUI();updateWaterUI();updateStepsUI();
 }
-
-function updateScores() {
-  let beauTotal = 0, annaliseTotal = 0;
-  Object.values(allEntries.beau || {}).forEach(e => { beauTotal += e.workout + e.water; });
-  Object.values(allEntries.annalise || {}).forEach(e => { annaliseTotal += e.workout + e.water; });
-
-  document.getElementById('beau-total').textContent = beauTotal;
-  document.getElementById('annalise-total').textContent = annaliseTotal;
-
-  const bPacing = getPacingText(beauTotal);
-  const aPacing = getPacingText(annaliseTotal);
-  const bEl = document.getElementById('beau-pacing');
-  const aEl = document.getElementById('annalise-pacing');
-  bEl.textContent = bPacing.text;
-  bEl.style.color = bPacing.color;
-  aEl.textContent = aPacing.text;
-  aEl.style.color = aPacing.color;
-
-  const banner = document.getElementById('winner-banner');
-  if (beauTotal === 0 && annaliseTotal === 0) {
-    banner.textContent = '🏁 Challenge is on — first to log wins the lead!';
-  } else if (beauTotal > annaliseTotal) {
-    banner.textContent = `🏆 BEAU IS LEADING  •  +${beauTotal - annaliseTotal} pts ahead`;
-  } else if (annaliseTotal > beauTotal) {
-    banner.textContent = `🏆 ANNALISE IS LEADING  •  +${annaliseTotal - beauTotal} pts ahead`;
-  } else {
-    banner.textContent = `🤝 ALL TIED UP  •  ${beauTotal} pts each`;
-  }
-}
-
-function updateEntryUI() {
-  const color = currentPlayer === 'beau' ? 'beau' : 'annalise';
-  const name = currentPlayer === 'beau' ? 'Beau' : 'Annalise';
-
-  // Card color class
-  document.getElementById('today-card').className = `today-card ${color}-active`;
-  document.getElementById('entry-label').textContent = `Log ${selectedDate === todayStr() ? 'Today' : dateLabel(selectedDate)} — ${name}`;
-  document.getElementById('cal-label').textContent = `June — ${name}`;
-
-  // Date label
-  document.getElementById('today-date-label').textContent =
-    selectedDate === todayStr() ? `Today • ${dateLabel(selectedDate)}` : dateLabel(selectedDate);
-
-  // Load existing values for selected date
-  const existing = (allEntries[currentPlayer] || {})[selectedDate];
-  workoutVal = existing ? existing.workout : 0;
-  waterVal   = existing ? existing.water  : 0;
-
-  updateStepperUI();
-  updateWaterUI();
-}
-
-function updateStepperUI() {
-  document.getElementById('workout-count').textContent = workoutVal;
-  document.getElementById('workout-minus').disabled = workoutVal <= 0;
-  document.getElementById('workout-plus').disabled  = workoutVal >= 3;
-}
-
-function updateWaterUI() {
-  document.getElementById('water-yes').className = `water-btn${waterVal === 1 ? ' selected' : ''}`;
-  document.getElementById('water-no').className  = `water-btn${waterVal === 0 ? ' selected' : ''}`;
-}
-
-function renderCalendar() {
-  const grid = document.getElementById('cal-grid');
-  grid.innerHTML = '';
-  const playerColor = currentPlayer === 'beau' ? 'beau-cal' : 'annalise-cal';
-  const today = todayStr();
-  const entries = allEntries[currentPlayer] || {};
-
-  
-  const firstDow = new Date(2026, 5, 1).getDay(); // 0=Sun
-  for (let i = 0; i < firstDow; i++) {
-    const empty = document.createElement('div');
-    empty.className = 'cal-cell empty';
-    grid.appendChild(empty);
-  }
-
-  for (let d = 1; d <= 30; d++) {
-    const ds = `2026-06-${String(d).padStart(2,'0')}`;
-    const cell = document.createElement('div');
-    const isFuture = ds > today;
-    const isToday  = ds === today;
-    const hasData  = !!entries[ds];
-    const isSelected = ds === selectedDate;
-
-    let cls = 'cal-cell';
-    if (isFuture) cls += ' future';
-    if (isToday)  cls += ' today';
-    if (hasData)  cls += ` has-data ${playerColor}`;
-    if (isSelected) cls += ' selected-day';
-
-    cell.className = cls;
-    const pts = hasData ? entries[ds].workout + entries[ds].water : null;
-    cell.innerHTML = `<span class="cal-num">${d}</span>${pts !== null ? `<span class="cal-pts">${pts}pt</span>` : ''}`;
-
-    if (!isFuture) {
-      cell.addEventListener('click', () => {
-        selectedDate = ds;
-        updateEntryUI();
-        renderCalendar();
-      });
-    }
-
+function updateStepperUI(){document.getElementById('workout-count').textContent=workoutVal;document.getElementById('workout-minus').disabled=workoutVal<=0;document.getElementById('workout-plus').disabled=workoutVal>=3;}
+function updateWaterUI(){const yes=document.getElementById('water-yes');const no=document.getElementById('water-no');yes.className=`water-btn${waterVal===1?' selected':''}`;no.className=`water-btn${waterVal===0?' selected':''}`;}
+function updateStepsUI(){[0,1,2,3].forEach(v=>{document.getElementById(`steps-${v}`).classList.toggle('selected',stepsVal===v);});}
+function renderCalendar(){
+  const grid=document.getElementById('cal-grid');grid.innerHTML='';
+  const playerColor=currentPlayer==='beau'?'beau-cal':'annalise-cal';
+  const today=todayStr();const entries=allEntries[currentPlayer]||{};
+  const firstDow=new Date(2026,6,1).getDay();
+  for(let i=0;i<firstDow;i++){const e=document.createElement('div');e.className='cal-cell empty';grid.appendChild(e);}
+  for(let d=1;d<=31;d++){
+    const ds=`2026-07-${String(d).padStart(2,'0')}`;const cell=document.createElement('div');
+    const isFuture=ds>today;const isToday=ds===today;const hasData=!!entries[ds];const isSelected=ds===selectedDate;
+    const pts=hasData?totalPts(entries[ds]):null;
+    let cls='cal-cell';if(isFuture)cls+=' future';if(isToday)cls+=' today';if(hasData)cls+=` has-data ${playerColor}`;if(isSelected)cls+=' selected-day';
+    cell.className=cls;cell.innerHTML=`<span class="cal-num">${d}</span>${pts!==null?`<span class="cal-pts">${pts}pt</span>`:''}`;
+    if(!isFuture){cell.addEventListener('click',()=>{selectedDate=ds;updateEntryUI();renderCalendar();});}
     grid.appendChild(cell);
   }
 }
-
-// ── Controls ────────────────────────────────────────────────────────────────
-
-function switchPlayer(player) {
-  currentPlayer = player;
-  selectedDate = todayStr();
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  const btn = player === 'beau' ? document.querySelector('.tab-btn.beau') : document.querySelector('.tab-btn.annalise');
-  btn.classList.add('active');
-  updateEntryUI();
-  renderCalendar();
+function switchPlayer(player){
+  currentPlayer=player;selectedDate=todayStr();
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelector(`.tab-btn.${player}`).classList.add('active');
+  updateEntryUI();renderCalendar();
 }
-
-function changeWorkout(delta) {
-  workoutVal = Math.max(0, Math.min(3, workoutVal + delta));
-  updateStepperUI();
+function changeWorkout(delta){workoutVal=Math.max(0,Math.min(3,workoutVal+delta));updateStepperUI();}
+function setWater(val){waterVal=val;updateWaterUI();}
+function setSteps(val){stepsVal=val;updateStepsUI();}
+async function saveEntry(){
+  const btn=document.getElementById('save-btn');btn.disabled=true;btn.textContent='SAVING...';
+  const ok=await upsertEntry(currentPlayer,selectedDate,workoutVal,waterVal,stepsVal);
+  if(ok){allEntries[currentPlayer][selectedDate]={workout:workoutVal,water:waterVal,steps:stepsVal};updateScores();renderCalendar();showToast(`✓ Saved! ${workoutVal+waterVal+stepsVal} pts logged`);}
+  else{showToast('❌ Save failed — check connection');}
+  btn.disabled=false;btn.textContent='SAVE LOG';
 }
-
-function setWater(val) {
-  waterVal = val;
-  updateWaterUI();
-}
-
-async function saveEntry() {
-  const btn = document.getElementById('save-btn');
-  btn.disabled = true;
-  btn.textContent = 'SAVING...';
-
-  const ok = await upsertEntry(currentPlayer, selectedDate, workoutVal, waterVal);
-
-  if (ok) {
-    if (!allEntries[currentPlayer]) allEntries[currentPlayer] = {};
-    allEntries[currentPlayer][selectedDate] = { workout: workoutVal, water: waterVal };
-    updateScores();
-    renderCalendar();
-    showToast(`✓ Saved! ${workoutVal + waterVal} pts logged`);
-  } else {
-    showToast('❌ Save failed — check connection');
-  }
-
-  btn.disabled = false;
-  btn.textContent = 'SAVE LOG';
-}
-
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2500);
-}
-
-// ── Init ────────────────────────────────────────────────────────────────────
-
-async function init() {
-  document.getElementById('today-date-label').textContent = 'Loading...';
-  await fetchAllEntries();
-  updateScores();
-  updateEntryUI();
-  renderCalendar();
-
-  // Auto-refresh every 30 seconds to catch partner's updates
-  setInterval(async () => {
-    await fetchAllEntries();
-    updateScores();
-    renderCalendar();
-    updateEntryUI();
-  }, 30000);
-}
-
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500);}
+async function init(){await fetchAllEntries();updateScores();updateEntryUI();renderCalendar();setInterval(async()=>{await fetchAllEntries();updateScores();renderCalendar();updateEntryUI();},30000);}
 init();
 </script>
 </body>
